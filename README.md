@@ -17,9 +17,8 @@ A host sends command frames over a UART link; the system decodes them, reads/wri
 7. [Setup](#setup)
 8. [How to Run](#how-to-run)
 9. [Implementation Results](#implementation-results)
-10. [Status and Known Issues](#status-and-known-issues)
-11. [Documentation](#documentation)
-12. [License](#license)
+10. [Documentation](#documentation)
+11. [License](#license)
 
 ---
 
