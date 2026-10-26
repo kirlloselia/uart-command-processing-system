@@ -5,7 +5,7 @@ vmap work
 vlog -sv $env(PROJECT_HOME)/std_cells/tsmc13_m.v
 
 # Compile Gate-Level Netlist
-vlog -sv SYS_TOP.v
+vlog -sv $env(PROJECT_HOME)/System_pnr/pnr/export/SYS_TOP.v
 # Compile Testbench
 vlog -sv tb.sv
 
