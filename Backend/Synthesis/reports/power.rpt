@@ -1,0 +1,106 @@
+Loading db file '/home/ICer/System/std_cells/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : sys_top
+Version: O-2018.06-SP1
+Date   : Tue Oct  6 21:00:49 2026
+****************************************
+
+
+Library(s) Used:
+
+    scmetro_tsmc_cl013g_rvt_ss_1p08v_125c (File: /home/ICer/System/std_cells/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db)
+
+
+Operating Conditions: scmetro_tsmc_cl013g_rvt_ss_1p08v_125c   Library: scmetro_tsmc_cl013g_rvt_ss_1p08v_125c
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.08 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+sys_top                                7.82e-03    0.205 1.25e+07    0.225 100.0
+  data_sync_inst (data_sync_BUS_WIDTH8)
+                                          0.000 8.68e-03 1.72e+05 8.85e-03   3.9
+    pulse_gen_inst (pulse_gen_1)          0.000 7.23e-04 1.48e+04 7.38e-04   0.3
+    bit_sync_inst (bit_sync_NUM_STAGES2_BUS_WIDTH1_0)
+                                          0.000 1.45e-03 2.07e+04 1.47e-03   0.7
+  sys_ctrl (sys_ctrl_ADDR_WIDTH4_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16)
+                                          0.000 6.06e-03 4.74e+05 6.54e-03   2.9
+  pulse_gen_inst (pulse_gen_0)            0.000 4.98e-06 1.38e+04 1.88e-05   0.0
+  ASYNC_FIFO_inst (ASYNC_FIFO_DATA_WIDTH8_DEPTH8)
+                                       1.15e-03 5.82e-02 1.80e+06 6.12e-02  27.2
+    u_r_synchronizer_2ff (synchronizer_2ff_WIDTH4_1)
+                                          0.000 5.79e-03 8.27e+04 5.87e-03   2.6
+    u_w_synchronizer_2ff (synchronizer_2ff_WIDTH4_0)
+                                          0.000 3.99e-05 7.48e+04 1.15e-04   0.1
+    u_async_fifo_read_pointer (async_fifo_read_pointer_DEPTH8)
+                                          0.000 3.94e-05 2.01e+05 2.40e-04   0.1
+      b2g_r (b2g_WIDTH3_1)                0.000    0.000 2.77e+04 2.77e-05   0.0
+    u_async_fifo_write_pointer (async_fifo_write_pointer_DEPTH8)
+                                          0.000 5.86e-03 2.03e+05 6.06e-03   2.7
+      b2g_w (b2g_WIDTH3_0)                0.000    0.000 2.77e+04 2.77e-05   0.0
+    u_asyc_fifo_mem (asyc_fifo_mem_DATA_WIDTH8_DEPTH8)
+                                       9.10e-04 4.65e-02 1.23e+06 4.86e-02  21.6
+  RegFile_inst (RegFile_ADDR_WIDTH4_DATA_WIDTH8)
+                                       1.92e-03 9.96e-02 2.58e+06    0.104  46.3
+  ALU_inst (ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16)
+                                       3.83e-04 2.39e-02 4.38e+06 2.87e-02  12.8
+    mult_49 (ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW02_mult_0)
+                                          0.000    0.000 1.65e+06 1.65e-03   0.7
+    add_44 (ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW01_add_0)
+                                          0.000    0.000 2.05e+05 2.05e-04   0.1
+    sub_47 (ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW01_sub_0)
+                                          0.000    0.000 2.48e+05 2.48e-04   0.1
+    div_50 (ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW_div_uns_0)
+                                          0.000    0.000 1.24e+06 1.24e-03   0.6
+  clk_gate_inst (clk_gate_USE_ICG1)    2.94e-03 2.13e-03 1.48e+04 5.08e-03   2.3
+  uart_inst (uart_DATA_WIDTH8)         4.89e-04 2.04e-03 1.87e+06 4.40e-03   2.0
+    U0_UART_RX (uart_rx_DATA_WIDTH8)   3.07e-04 1.90e-03 1.23e+06 3.44e-03   1.5
+      stop_check_inst (stop_check)        0.000 5.62e-05 1.70e+04 7.31e-05   0.0
+      parity_check_inst (parity_check)    0.000 5.62e-05 1.28e+05 1.84e-04   0.1
+      start_check_inst (start_check)   3.26e-06 3.88e-06 4.79e+03 1.19e-05   0.0
+      deserializer_inst (deserializer)    0.000 4.49e-04 1.24e+05 5.74e-04   0.3
+      data_sampling_inst (data_sampling_MAX_WIDTH6)
+                                       2.70e-05 2.51e-04 4.15e+05 6.92e-04   0.3
+      edge_bit_counter_inst (edge_bit_counter_MAX_WIDTH6)
+                                       2.34e-05 5.96e-04 3.53e+05 9.73e-04   0.4
+      controller_inst (rx_controller)  4.58e-05 4.74e-04 1.83e+05 7.03e-04   0.3
+    U0_UART_TX (uart_tx_DATA_WIDTH8)   1.68e-04 1.31e-04 6.35e+05 9.35e-04   0.4
+      mux_inst (mux)                      0.000    0.000 2.88e+04 2.88e-05   0.0
+      parity_calc_inst (parity_calc)      0.000 4.48e-05 2.60e+05 3.05e-04   0.1
+      serializer_inst (serializer)        0.000 5.48e-05 2.25e+05 2.80e-04   0.1
+        counter_inst (counter)            0.000 1.49e-05 6.74e+04 8.24e-05   0.0
+      controller_inst (tx_controller)     0.000 1.95e-05 1.16e+05 1.35e-04   0.1
+  rx_clk_div_inst (clk_div_RATIO_WIDTH8_1)
+                                       2.00e-04 5.80e-04 5.14e+05 1.29e-03   0.6
+    add_46 (clk_div_RATIO_WIDTH8_1_DW01_inc_0)
+                                          0.000    0.000 8.37e+04 8.37e-05   0.0
+  tx_clk_div_inst (clk_div_RATIO_WIDTH8_0)
+                                       6.66e-05 7.25e-04 5.05e+05 1.30e-03   0.6
+    add_46 (clk_div_RATIO_WIDTH8_0_DW01_inc_0)
+                                       6.19e-06 1.85e-05 8.32e+04 1.08e-04   0.0
+  div_mux_inst (div_mux)                  0.000    0.000 9.32e+04 9.32e-05   0.0
+  d1_rst_sync_inst (rst_sync_1)        9.05e-06 2.48e-04 2.84e+04 2.86e-04   0.1
+    genblk1.bit_sync_inst (bit_sync_NUM_STAGES2_BUS_WIDTH1_2)
+                                       4.37e-06 2.36e-04 2.40e+04 2.65e-04   0.1
+  d0_rst_sync_inst (rst_sync_0)        4.14e-04 2.27e-03 2.97e+04 2.72e-03   1.2
+    genblk1.bit_sync_inst (bit_sync_NUM_STAGES2_BUS_WIDTH1_1)
+                                       8.77e-06 2.24e-03 2.53e+04 2.28e-03   1.0
+1

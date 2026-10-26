@@ -1,0 +1,107 @@
+ 
+****************************************
+Report : area
+Design : sys_top
+Version: O-2018.06-SP1
+Date   : Tue Oct  6 21:00:48 2026
+****************************************
+
+Library(s) Used:
+
+    scmetro_tsmc_cl013g_rvt_ss_1p08v_125c (File: /home/ICer/System/std_cells/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db)
+
+Number of ports:                          792
+Number of nets:                          2745
+Number of cells:                         1944
+Number of combinational cells:           1519
+Number of sequential cells:               380
+Number of macros/black boxes:               0
+Number of buf/inv:                        290
+Number of references:                      15
+
+Combinational area:              12557.742600
+Buf/Inv area:                     1103.744623
+Noncombinational area:            9426.543585
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                 21984.286185
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ----------------------------- 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-  Black-
+                                  Total       Total    national    national   boxes   Design
+--------------------------------  ----------  -------  ----------  ---------  ------  -------------------------------------------------------
+sys_top                           21984.2862    100.0     11.7670     0.0000  0.0000  sys_top
+ALU_inst                           6071.7720     27.6   1126.1019   854.2842  0.0000  ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16
+ALU_inst/add_44                     231.8099      1.1    231.8099     0.0000  0.0000  ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW01_add_0
+ALU_inst/div_50                    1437.9274      6.5   1437.9274     0.0000  0.0000  ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW_div_uns_0
+ALU_inst/mult_49                   2155.7144      9.8   1914.4909     0.0000  0.0000  ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW02_mult_0
+ALU_inst/mult_49/FS_1               241.2235      1.1    241.2235     0.0000  0.0000  ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW01_add_1
+ALU_inst/sub_47                     265.9342      1.2    265.9342     0.0000  0.0000  ALU_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16_DW01_sub_0
+ASYNC_FIFO_inst                    3873.6964     17.6     12.9437     0.0000  0.0000  ASYNC_FIFO_DATA_WIDTH8_DEPTH8
+ASYNC_FIFO_inst/u_asyc_fifo_mem    2707.5867     12.3   1050.7931  1656.7936  0.0000  asyc_fifo_mem_DATA_WIDTH8_DEPTH8
+ASYNC_FIFO_inst/u_async_fifo_read_pointer
+                                    369.4838      1.7    132.9671   208.2759  0.0000  async_fifo_read_pointer_DEPTH8
+ASYNC_FIFO_inst/u_async_fifo_read_pointer/b2g_r
+                                     28.2408      0.1     28.2408     0.0000  0.0000  b2g_WIDTH3_1
+ASYNC_FIFO_inst/u_async_fifo_write_pointer
+                                    369.4838      1.7    132.9671   208.2759  0.0000  async_fifo_write_pointer_DEPTH8
+ASYNC_FIFO_inst/u_async_fifo_write_pointer/b2g_w
+                                     28.2408      0.1     28.2408     0.0000  0.0000  b2g_WIDTH3_0
+ASYNC_FIFO_inst/u_r_synchronizer_2ff
+                                    207.0992      0.9      0.0000   207.0992  0.0000  synchronizer_2ff_WIDTH4_1
+ASYNC_FIFO_inst/u_w_synchronizer_2ff
+                                    207.0992      0.9      0.0000   207.0992  0.0000  synchronizer_2ff_WIDTH4_0
+RegFile_inst                       5718.7620     26.0   2172.1883  3546.5738  0.0000  RegFile_ADDR_WIDTH4_DATA_WIDTH8
+clk_gate_inst                        21.1806      0.1      0.0000    21.1806  0.0000  clk_gate_USE_ICG1
+d0_rst_sync_inst                     56.4816      0.3      4.7068     0.0000  0.0000  rst_sync_0
+d0_rst_sync_inst/genblk1.bit_sync_inst
+                                     51.7748      0.2      0.0000    51.7748  0.0000  bit_sync_NUM_STAGES2_BUS_WIDTH1_1
+d1_rst_sync_inst                     56.4816      0.3      4.7068     0.0000  0.0000  rst_sync_1
+d1_rst_sync_inst/genblk1.bit_sync_inst
+                                     51.7748      0.2      0.0000    51.7748  0.0000  bit_sync_NUM_STAGES2_BUS_WIDTH1_2
+data_sync_inst                      395.3712      1.8     78.8389   232.9866  0.0000  data_sync_BUS_WIDTH8
+data_sync_inst/bit_sync_inst         51.7748      0.2      0.0000    51.7748  0.0000  bit_sync_NUM_STAGES2_BUS_WIDTH1_0
+data_sync_inst/pulse_gen_inst        31.7709      0.1      5.8835    25.8874  0.0000  pulse_gen_1
+div_mux_inst                        169.4448      0.8    169.4448     0.0000  0.0000  div_mux
+pulse_gen_inst                       31.7709      0.1      5.8835    25.8874  0.0000  pulse_gen_0
+rx_clk_div_inst                     763.6783      3.5    438.9091   232.9866  0.0000  clk_div_RATIO_WIDTH8_1
+rx_clk_div_inst/add_46               91.7826      0.4     91.7826     0.0000  0.0000  clk_div_RATIO_WIDTH8_1_DW01_inc_0
+sys_ctrl                            780.1521      3.5    568.3461   211.8060  0.0000  sys_ctrl_ADDR_WIDTH4_DATA_WIDTH8_FUN_WIDTH4_OUT_WIDTH16
+tx_clk_div_inst                     763.6783      3.5    438.9091   232.9866  0.0000  clk_div_RATIO_WIDTH8_0
+tx_clk_div_inst/add_46               91.7826      0.4     91.7826     0.0000  0.0000  clk_div_RATIO_WIDTH8_0_DW01_inc_0
+uart_inst                          3270.0493     14.9      7.0602     0.0000  0.0000  uart_DATA_WIDTH8
+uart_inst/U0_UART_RX               2118.0600      9.6      7.0602     0.0000  0.0000  uart_rx_DATA_WIDTH8
+uart_inst/U0_UART_RX/controller_inst
+                                    376.5440      1.7    221.2196   155.3244  0.0000  rx_controller
+uart_inst/U0_UART_RX/data_sampling_inst
+                                    617.7675      2.8    514.2179   103.5496  0.0000  data_sampling_MAX_WIDTH6
+uart_inst/U0_UART_RX/deserializer_inst
+                                    298.8818      1.4     91.7826   207.0992  0.0000  deserializer
+uart_inst/U0_UART_RX/edge_bit_counter_inst
+                                    624.8277      2.8    365.9537   258.8740  0.0000  edge_bit_counter_MAX_WIDTH6
+uart_inst/U0_UART_RX/parity_check_inst
+                                    149.4409      0.7    123.5535    25.8874  0.0000  parity_check
+uart_inst/U0_UART_RX/start_check_inst
+                                      5.8835      0.0      5.8835     0.0000  0.0000  start_check
+uart_inst/U0_UART_RX/stop_check_inst
+                                     37.6544      0.2     11.7670    25.8874  0.0000  stop_check
+uart_inst/U0_UART_TX               1144.9291      5.2      7.0602     0.0000  0.0000  uart_tx_DATA_WIDTH8
+uart_inst/U0_UART_TX/controller_inst
+                                    209.4526      1.0    104.7263   104.7263  0.0000  tx_controller
+uart_inst/U0_UART_TX/mux_inst        34.1243      0.2     34.1243     0.0000  0.0000  mux
+uart_inst/U0_UART_TX/parity_calc_inst
+                                    425.9654      1.9    192.9788   232.9866  0.0000  parity_calc
+uart_inst/U0_UART_TX/serializer_inst
+                                    468.3266      2.1    124.7302   207.0992  0.0000  serializer
+uart_inst/U0_UART_TX/serializer_inst/counter_inst
+                                    136.4972      0.6     58.8350    77.6622  0.0000  counter
+--------------------------------  ----------  -------  ----------  ---------  ------  -------------------------------------------------------
+Total                                                  12557.7426  9426.5436  0.0000
+
+1
