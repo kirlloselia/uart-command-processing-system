@@ -1,0 +1,36 @@
+# Standard cells / vendor IP (licensed, must not be redistributed)
+std_cells/*
+!std_cells/README.md
+
+# Tool work libraries and scratch
+**/work/
+**/FM_WORK*/
+**/*.lck
+**/vsim.wlf
+**/wlft*
+**/*.vstf
+**/transcript
+**/*.vcd
+System_pnr/gls/VCD/*
+!System_pnr/gls/VCD/.gitkeep
+**/command.log
+**/*~
+**/system copy.lst
+
+# SpyGlass run database (keep only sys.lst, sys_lint.prj, system.sgdc)
+lint/sys_lint/
+lint/*.log
+lint/sys_lint_*.prj
+
+# Encounter databases and temporaries
+System_pnr/pnr/*.enc.dat/
+System_pnr/pnr/td_RCDB_*
+System_pnr/pnr/nanoroute_tmp*
+System_pnr/pnr/*.rcdb.d/
+System_pnr/pnr/.SYS_TOP*
+System_pnr/pnr/.rir*
+System_pnr/pnr/.riw*
+System_pnr/pnr/*.place.gz
+System_pnr/pnr/*.route.gz
+System_pnr/pnr/encounter.cmd1
+System_pnr/pnr/encounter.log1
