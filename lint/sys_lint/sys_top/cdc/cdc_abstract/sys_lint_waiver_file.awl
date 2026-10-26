@@ -1,0 +1,1 @@
+waive -msg {Port coverage for top design unit 'sys_top' is: '1' (25.00 %) port(s) not fully constrained}  -rule {  {Setup_port01}  }  -comment {Created by ICer on 05-Oct-2026 19:22:56}  -exact 

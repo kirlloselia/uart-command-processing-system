@@ -1,0 +1,11 @@
+waive -msg {Enable pin EN on Flop sys_top.tx_clk_div_inst.odd (master RTL_FDPE) is always disabled (tied low)(connected to sys_top.tx_clk_div_inst.VCC)}  -rule {  {FlopEConst}  }  -exact -comment {Created by ICer on 01-Oct-2026 01:02:02 since tx_div_ratio is even (from sgdc file) the odd ff isnt enabled at all} 
+waive -msg {Enable pin EN on Flop sys_top.tx_clk_div_inst.odd (master RTL_FDPE) is always disabled (tied low)(connected to sys_top.tx_clk_div_inst.VCC)}  -rule {  {FlopEConst}  }  -exact -comment {Created by ICer on 01-Oct-2026 01:02:02 since tx_div_ratio is even (from sgdc file) the odd ff isnt enabled at all} 
+waive -msg {Clock signal 'sys_top.tx_clk_div_inst.div_clk' used  as a non-clock (Used with name 'sys_top.tx_clk_div_inst.div_clk'). For similar 2 cases, please refer to the spreadsheet for details}  -rule {  {STARC05-1.4.3.4}  }  -exact -comment {Created by ICer on 01-Oct-2026 01:03:48} 
+waive -msg {Clock signal 'sys_top.tx_clk_div_inst.div_clk' used as a non-clock (Used with name 'sys_top.tx_clk_div_inst.div_clk')}  -rule {  {STARC05-1.4.3.4}  }  -exact -comment {child record}  -spreadsheet
+waive -msg {Clock signal 'sys_top.rx_clk_div_inst.div_clk' used as a non-clock (Used with name 'sys_top.rx_clk_div_inst.div_clk')}  -rule {  {STARC05-1.4.3.4}  }  -exact -comment {child record}  -spreadsheet
+waive -du {  {serializer}  }  -msg {Variable 'low' set but not read.[Hierarchy: ':sys_top:uart_inst@uart:U0_UART_TX@uart_tx:serializer_inst@serializer']}  -rule {  {W528}  }  -exact -comment {is not used intended} 
+waive -du {  {serializer}  }  -msg {Variable 'low' set but not read.[Hierarchy: ':sys_top:uart_inst@uart:U0_UART_TX@uart_tx:serializer_inst@serializer']}  -rule {  {W528}  }  -exact -comment {is not used intended} 
+waive -rule {  {ReportIgnoredOverlappingRules}  }  -exact -comment {Overlapping rules checked by multiple goals is okay } 
+waive -rule {  {ReportIgnoredOverlappingRules}  }  -exact -comment {Overlapping rules checked by multiple goals is okay } 
+
+# waive -du {  {clk_div}  }  -msg {Clock signal 'sys_top.tx_clk_div_inst.div_clk' used  as a non-clock (Used with name 'sys_top.tx_clk_div_inst.div_clk'). For similar 2 cases, please refer to the spreadsheet for details}  -rule {  {STARC05-1.4.3.4}  }  -comment {parent_waived_as_child_get_waived}  -parent -exact 
