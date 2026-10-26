@@ -4,8 +4,6 @@
 
 A host sends command frames over a UART link; the system decodes them, reads/writes an internal register file or executes an ALU operation, and returns the result over UART. The design spans two asynchronous clock domains (50 MHz system logic and a 3.6864 MHz UART domain) and is implemented end to end in a 0.13 µm standard-cell flow.
 
-> This is a **self-contained digital subsystem**, not an SoC: there is no processor core, bus fabric or memory subsystem. The controller is a hardware FSM driven entirely by UART commands.
-
 ---
 
 ## Table of Contents
@@ -163,9 +161,8 @@ Each block directory follows the same pattern: `rtl/` (design), `tb/` (testbench
 | Place & route | Cadence First Encounter / Encounter 08.10 |
 | Technology | TSMC 0.13 µm (CL013G) RVT standard cells: SS 1.08 V 125 °C, TT 1.2 V 25 °C, FF 1.32 V −40 °C |
 
-All EDA tools are commercial and must be licensed separately.
 
-**Standard-cell libraries are not included in this repository** because they are covered by the foundry/vendor license. Before running any backend or gate-level flow, place the following under `std_cells/`:
+Before running any backend or gate-level flow, place the following under `std_cells/`:
 
 ```
 std_cells/
@@ -282,30 +279,22 @@ vsim -do run.do
 
 ## Implementation Results
 
-Values below are taken directly from the reports included in the repository.
-
 | Stage | Result |
 |---|---|
 | Synthesis (`sys_top`) | 1944 cells (380 sequential), total cell area 21,984 µm², no violated constraints reported (`reports/constraints.rpt`) |
 | Post-synthesis power estimate | 0.225 mW total (SS 1.08 V / 125 °C, low-effort propagated activity; indicative only) |
 | DFT (`SYS_TOP`) | 4 scan chains, 364 sequential cells, total cell area 24,679 µm², estimated test coverage 99.59 % (`dft_drc -coverage_estimate`) |
 | Formality | RTL vs. post-synthesis: verification succeeded. RTL vs. post-DFT: verification succeeded (scan-out ports excluded; `test_mode` and `SE` constrained to 0) |
-| Place & route | Floorplan 240.47 µm × 160.47 µm; `verifyGeometry`: no DRC violations; `verifyConnectivity`: no problems; `verifyProcessAntenna`: no violations; GDSII exported |
+| Place & route | Floorplan 240.47 µm × 160.47 µm; `verifyGeometry`: no DRC violations; `verifyConnectivity`: no problems; `verifyProcessAntenna`: no violations; |
 | System tests | 4 / 4 directed tests pass in RTL simulation (`System_Test_Cases.pdf`) |
 
 ### Power methodology scope
 
-This project implements **one** power-reduction technique: **dynamic power reduction through operand/execution clock gating of the ALU while it is idle** (the ALU clock only toggles when `SYS_CTRL` launches an operation). It does not use multi-voltage, power gating, or UPF-based low-power implementation, and it should not be read as a full low-power design flow.
+This project implements power-reduction technique: **dynamic power reduction through operand/execution clock gating of the ALU while it is idle** (the ALU clock only toggles when `SYS_CTRL` launches an operation).
 
 ---
 
-## Status and Known Issues
 
-- **Gate-level simulation with SDF back-annotation**: the logged run reports `$setup`/`$hold` timing-check violations on reset/data pins around reset release when the PnR SDF is annotated. Functional behaviour of the netlist is exercised by the same four test cases; closing out the SDF-annotated timing checks is open work.
-- **DFT DRC**: one `TEST-505` (cell tied to constant 1) violation is reported by `dft_drc` before and after insertion.
-- **Standard cells and tool databases** are not distributed; see [Tools and Prerequisites](#tools-and-prerequisites).
-
----
 
 ## Documentation
 
@@ -318,8 +307,8 @@ This project implements **one** power-reduction technique: **dynamic power reduc
 
 ## License
 
-See [LICENSE](LICENSE). Third-party standard-cell libraries and EDA tool outputs that embed them remain subject to their own licenses.
+See [LICENSE](LICENSE).
 
 ## Author
 
-<AUTHOR_NAME>
+Kirllos Atef
