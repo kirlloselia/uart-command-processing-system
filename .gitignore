@@ -20,7 +20,8 @@ System_pnr/gls/VCD/*
 # SpyGlass run database (keep reviewable waivers and reports)
 lint/sys_lint/*
 !lint/sys_lint/**/
-lint/sys_lint/**/*.*
+lint/sys_lint/**
+!lint/sys_lint/**/
 !lint/sys_lint/**/sys_lint_waiver_file.awl
 !lint/sys_lint/consolidated_reports/**/*.rpt
 !lint/sys_lint/html_reports/goals_summary.html
