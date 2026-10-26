@@ -1,0 +1,97 @@
+
+current_design sys_top
+
+####################################################################################
+           #########################################################
+                  #### Section 1 : Clock Definition ####
+           #########################################################
+#################################################################################### 
+#set REF_CLK_PER 20
+#set UART_CLK_PER [expr 1000.0/3.6864]
+
+clock -name ref_clk -period 20 -waveform {0 10} -domain d_ref
+
+clock -name uart_clk -period 271.267 -waveform {0 135.6335} -domain d_uart
+
+# tool needs the rst domain to be identified, thus we create virtual clk
+#clock -period 20 -waveform {0 10} -domain virtual_clk -tag virtual_clk
+####################################################################################
+           #########################################################
+                  #### Section 2 : Reset Definition ####
+           #########################################################
+####################################################################################
+
+#Active Low Async Reset (rst_n)
+reset -name rst_n -value 0 -async
+
+####################################################################################
+           #########################################################
+             #### Section 3 : set input/output clock domains  ####
+           #########################################################
+####################################################################################
+
+abstract_port -ports rx_in  -clock uart_clk    
+
+abstract_port -ports tx_out  -clock uart_clk    
+
+abstract_port -ports parity_error  -clock uart_clk
+
+abstract_port -ports framing_error  -clock uart_clk
+
+# abstract_port -ports RST  -clock virtual_clk
+
+####################################################################################
+           #########################################################
+             #### Section 4 : DATA/RESET Synchronizers  ####
+           #########################################################
+####################################################################################
+reset_synchronizer -name d0_rst_sync_inst.sync_rst
+reset_synchronizer -name d1_rst_sync_inst.sync_rst
+sync_cell -name bit_sync
+sync_cell -name synchronizer_2ff
+# sync_cell -name data_sync
+
+####################################################################################
+             #### Section 5 : Quasi static signals  ####
+####################################################################################
+
+# quasi_static -name RegFile_inst.reg_2
+# quasi_static -name RegFile_inst.reg_3
+
+####################################################################################
+             #### Section 6 : set_case_analysis  ####
+####################################################################################
+
+# Enable divider
+set_case_analysis -name sys_top.clk_div_en -value 1
+
+# tx_div_ratio = 8'b00100000 (division ratio = 32)
+set_case_analysis -name sys_top.tx_div_ratio[7] -value 0
+set_case_analysis -name sys_top.tx_div_ratio[6] -value 0
+set_case_analysis -name sys_top.tx_div_ratio[5] -value 1
+set_case_analysis -name sys_top.tx_div_ratio[4] -value 0
+set_case_analysis -name sys_top.tx_div_ratio[3] -value 0
+set_case_analysis -name sys_top.tx_div_ratio[2] -value 0
+set_case_analysis -name sys_top.tx_div_ratio[1] -value 0
+set_case_analysis -name sys_top.tx_div_ratio[0] -value 0
+
+# prescale = 6'b001000 (prescale ratio = 8)
+set_case_analysis -name sys_top.prescale[5] -value 0
+set_case_analysis -name sys_top.prescale[4] -value 0
+set_case_analysis -name sys_top.prescale[3] -value 1
+set_case_analysis -name sys_top.prescale[2] -value 0
+set_case_analysis -name sys_top.prescale[1] -value 0
+set_case_analysis -name sys_top.prescale[0] -value 0
+
+# parity_enable = 1'b1
+set_case_analysis -name sys_top.parity_enable -value 1
+
+# parity_type = 1'b0
+set_case_analysis -name sys_top.parity_type -value 0
+
+####################################################################################
+             #### Section 7 : Constraints  ####
+####################################################################################
+cdc_attribute -unrelated  {sys_top.rx_data_valid sys_top.ASYNC_FIFO_inst.r_ptr_gray}
+#cdc_attribute -unrelated  {top.mult_busy top.u_async_fifo.gray_w_ptr}
+
