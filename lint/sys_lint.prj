@@ -1,0 +1,96 @@
+#!SPYGLASS_PROJECT_FILE
+#!VERSION 3.0
+#  -------------------------------------------------------------------
+#  This is a software generated project file. Manual edits to this file could be lost during the next save operation
+#  Copyright Synopsys Inc.
+#  Last Updated By: SpyGlass SpyGlass_vL-2016.06
+#  Last Updated On Tue Oct  6 06:21:21 2026
+#
+#  -------------------------------------------------------------------
+
+##Data Import Section
+
+read_file -type verilog ../System_Design/ALU/rtl/ALU.sv
+read_file -type verilog ../System_Design/SYS_CTRL/rtl/sys_ctrl.sv
+read_file -type verilog ../System_Design/CLK_GATE/rtl/clk_gate.sv
+read_file -type verilog ../System_Design/SYS_TOP/rtl/SYS_TOP.sv
+read_file -type verilog ../System_Design/CLOCK_DIVIDER/rtl/clk_div.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/rx_controller.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/data_sampling.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/deserializer.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/edge_bit_counter.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/parity_check.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/stop_chk.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/strt_check.sv
+read_file -type verilog ../System_Design/UART/UART_RX/rtl/uart_rx.sv
+read_file -type verilog ../System_Design/UART/UART_TOP/rtl/uart.sv
+read_file -type verilog ../System_Design/UART/UART_TX/rtl/tx_controller.sv
+read_file -type verilog ../System_Design/UART/UART_TX/rtl/counter.sv
+read_file -type verilog ../System_Design/UART/UART_TX/rtl/mux.sv
+read_file -type verilog ../System_Design/UART/UART_TX/rtl/parity_calc.sv
+read_file -type verilog ../System_Design/UART/UART_TX/rtl/serializer.sv
+read_file -type verilog ../System_Design/UART/UART_TX/rtl/uart_tx.sv
+read_file -type verilog ../System_Design/DATA_SYNC/rtl/bit_sync.sv
+read_file -type verilog ../System_Design/DATA_SYNC/rtl/data_sync.sv
+read_file -type verilog ../System_Design/DIV_MUX/rtl/div_mux.sv
+read_file -type verilog ../System_Design/FIFO/rtl/asyc_fifo_mem.v
+read_file -type verilog ../System_Design/FIFO/rtl/ASYNC_FIFO.v
+read_file -type verilog ../System_Design/FIFO/rtl/async_fifo_read_pointer.v
+read_file -type verilog ../System_Design/FIFO/rtl/async_fifo_write_pointer.v
+read_file -type verilog ../System_Design/FIFO/rtl/b2g.v
+read_file -type verilog ../System_Design/FIFO/rtl/synchronizer_2ff.v
+read_file -type verilog ../System_Design/PULSE_GEN/rtl/pulse_gen.sv
+read_file -type verilog ../System_Design/RegFile/rtl/RegFile.sv
+read_file -type verilog ../System_Design/RST_SYNC/rtl/rst_sync.sv
+read_file -type gateslib ../std_cells/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.lib
+read_file -type sgdc system.sgdc
+
+##Common Options Section
+
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis yes
+set_option designread_disable_flatten no
+set_option enableSV yes
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option top sys_top
+
+
+##Goal Setup Section
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+
+current_goal lint/lint_rtl -alltop
+read_file -type awl ./sys_lint/lint/lint_rtl/sys_lint_waiver_file.awl
+set_goal_option default_waiver_file ./sys_lint/lint/lint_rtl/sys_lint_waiver_file.awl
+
+
+current_goal lint/lint_rtl -top sys_top
+read_file -type awl ./sys_lint/sys_top/lint/lint_rtl/sys_lint_waiver_file.awl
+
+
+current_goal lint/lint_turbo_rtl -top sys_top
+read_file -type awl ./sys_lint/sys_top/lint/lint_turbo_rtl/sys_lint_waiver_file.awl
+set_goal_option default_waiver_file ./sys_lint/sys_top/lint/lint_turbo_rtl/sys_lint_waiver_file.awl
+
+
+current_goal cdc/cdc_setup_check -top sys_top
+read_file -type awl ./sys_lint/sys_top/cdc/cdc_setup_check/sys_lint_waiver_file.awl
+set_goal_option default_waiver_file ./sys_lint/sys_top/cdc/cdc_setup_check/sys_lint_waiver_file.awl
+
+
+current_goal cdc/cdc_verify_struct -top sys_top
+read_file -type awl ./sys_lint/sys_top/cdc/cdc_verify_struct/sys_lint_waiver_file.awl
+set_goal_option default_waiver_file ./sys_lint/sys_top/cdc/cdc_verify_struct/sys_lint_waiver_file.awl
+
+
+current_goal cdc/cdc_verify -top sys_top
+read_file -type awl ./sys_lint/sys_top/cdc/cdc_verify/sys_lint_waiver_file.awl
+set_goal_option default_waiver_file ./sys_lint/sys_top/cdc/cdc_verify/sys_lint_waiver_file.awl
+
+
+current_goal cdc/cdc_abstract -top sys_top
+read_file -type awl ./sys_lint/sys_top/cdc/cdc_abstract/sys_lint_waiver_file.awl
+set_goal_option default_waiver_file ./sys_lint/sys_top/cdc/cdc_abstract/sys_lint_waiver_file.awl
+
