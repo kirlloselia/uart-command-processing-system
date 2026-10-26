@@ -10,7 +10,7 @@ vlog -sv $env(PROJECT_HOME)/System_pnr/pnr/export/SYS_TOP.v
 vlog -sv tb.sv
 
 # Start Simulation
-vsim -sdfmax /tb/dft_sel/DUT=SYS_TOP.sdf -sdfnoerror work.tb
+vsim -sdfmax /tb/dft_sel/DUT=$env(PROJECT_HOME)/System_pnr/pnr/export/SYS_TOP.sdf -sdfnoerror work.tb
 
 # Load waveform 
 do wave.do

@@ -263,7 +263,7 @@ source chip_finish.tcl     ;# fillers and final checks
 source outputs_gen.tcl     ;# netlist, SDF, SPEF, power report, GDSII
 ```
 
-Outputs are written to `export/` (netlists, SDF, GDSII) and `report/`. Copy the exported `SYS_TOP.v` and `SYS_TOP.sdf` into `System_pnr/gls/` to run gate-level simulation (the repository ships the copies used for the included results).
+Outputs are written to `export/` (netlists, SDF, GDSII) and `report/`. The GLS flow reads the exported `SYS_TOP.v` and `SYS_TOP.sdf` directly from `System_pnr/pnr/export/`.
 
 ### 8. Gate-level simulation (post-layout)
 
@@ -272,7 +272,7 @@ cd $PROJECT_HOME/System_pnr/gls
 vsim -do run.do
 ```
 
-`run.do` compiles the standard-cell models (`std_cells/tsmc13_m.v`), the post-PnR netlist `SYS_TOP.v` and `tb.sv`, then simulates with the max-delay SDF back-annotated onto the DUT (`vsim -sdfmax /tb/dft_sel/DUT=SYS_TOP.sdf`). The same four commands are exercised as in the RTL testbench. A waveform dump is written to `VCD/system.vcd`.
+`run.do` compiles the standard-cell models (`std_cells/tsmc13_m.v`), the exported post-PnR netlist and `tb.sv`, then simulates with the exported max-delay SDF back-annotated onto the DUT. The same four commands are exercised as in the RTL testbench. A waveform dump is written to `VCD/system.vcd`.
 
 ---
 

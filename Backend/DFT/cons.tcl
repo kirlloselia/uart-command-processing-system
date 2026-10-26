@@ -67,6 +67,7 @@ set_clock_transition -fall $CLK_FALL $all_clks
 # 6. Dont touch network
 set_dont_touch_network $all_clks
 set_dont_touch_network [get_ports {RST_N scan_rst}]
+set_dont_touch_network [get_ports {SE SI}]
 
 #################### Section 2 : Clocks Relationship ####################
 set_clock_groups -asynchronous -group [get_clocks "$uart_clk_name RX_CLK TX_CLK"] \
